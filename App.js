@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import React from 'react';
+import StackNavigator from './routes/StackWrapper'
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to stasssart working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      //<RatingReviews />
+      <StackNavigator />
+      //<CustLocation />
+      // <TabNavigator /> 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
