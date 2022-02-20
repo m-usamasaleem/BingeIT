@@ -71,7 +71,7 @@ const PreSignUp = (navigationProps) => {
 
         <TouchableOpacity
           style={myStyles.loginScreenButton}
-          onPress={() => navigationProps.navigation.navigate("SignInCust")}
+          onPress={() => navigationProps.navigation.navigate("SignUpUser")}
         >
           <Text style={myStyles.loginText}>GET STARTED</Text>
         </TouchableOpacity>
