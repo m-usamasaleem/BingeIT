@@ -1,98 +1,142 @@
-import React from 'react' 
-import { View, StyleSheet, Text, Button,Dimensions,TouchableOpacity } from 'react-native' 
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
-var windowHeight = Dimensions.get('window').height;
-var windowWidth = Dimensions.get('window').width;
+var windowHeight = Dimensions.get("window").height;
+var windowWidth = Dimensions.get("window").width;
+var backgroundimage = require("../../assets/presignin/background.jpg");
+var logo = require("../../assets/icons/beingIT.png");
+
 const PreSignUp = (navigationProps) => {
-    return(
-        <React.Fragment> 
-            <View style = { myStyles.pageTop }> 
-                <Text  style = { myStyles.title }> MobileMechanic </Text>
+  return (
+    <React.Fragment>
+      <View style={myStyles.mainPage}>
+        <Image
+          source={backgroundimage}
+          style={{
+            height: windowHeight * 1,
+            width: windowWidth * 1,
+            position: "absolute",
+          }}
+        />
+        <View style={myStyles.pageTop}>
+          <Image
+            source={logo}
+            style={{
+              height: windowHeight * 0.1,
+              width: windowWidth * 0.08,
+              position: "relative",
+            }}
+          />
 
-            </View>
-            <View style = { myStyles.signUp }> 
-                <Text style = { myStyles.signin  } > Sign In </Text>
-            </View>
-            <View> 
+          <Text
+            style={[
+              myStyles.pageTopText,
+              {
+                marginLeft: windowWidth * 0.3,
+                paddingTop: windowHeight * 0.03,
+              },
+            ]}
+          >
+            PRIVACY
+          </Text>
+          <Text
+            style={[
+              myStyles.pageTopText,
+              {
+                marginLeft: windowWidth * 0.08,
+                paddingTop: windowHeight * 0.03,
+              },
+            ]}
+          >
+            SIGN IN
+          </Text>
+        </View>
 
-                            <TouchableOpacity
-                                    style={myStyles.loginScreenButton}
-                                    onPress={() => navigationProps.navigation.navigate('SignInCust')}
-                                    underlayColor='#fff'>
-                                    <Text style={myStyles.loginText}>Customer</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                    style={myStyles.loginScreenButton}
-                                    onPress={() => navigationProps.navigation.navigate('SignInMech')}
-                                    underlayColor='#fff'>
-                                    <Text style={myStyles.loginText}>Mechanic</Text>
-                            </TouchableOpacity>
-            </View>
-            <Text style = { myStyles.pageBottom }> 
-            <Text style = { {fontSize: 12} }> Do not Have an Account? <Text style = { {color:"#35b8b6", fontSize: 14} } onPress = { () => navigationProps.navigation.navigate('PreSignUp') }> SIGN UP </Text> </Text>
-            </Text>
-        </React.Fragment>
-    );
-}
+        <View style={myStyles.pageBottom}>
+          <Text style={myStyles.pageBottomTexta}>
+            Unlimited films, TV programmes, & more
+          </Text>
+          <Text style={myStyles.pageBottomTextb}>
+            Watch anywhere. Cancet at any time.
+          </Text>
+        </View>
+
+        <TouchableOpacity
+          style={myStyles.loginScreenButton}
+          onPress={() => navigationProps.navigation.navigate("SignInCust")}
+        >
+          <Text style={myStyles.loginText}>GET STARTED</Text>
+        </TouchableOpacity>
+      </View>
+    </React.Fragment>
+  );
+};
 
 const myStyles = StyleSheet.create({
-     
-    mobMech: {
-        marginTop: 30
-    }, 
-
-    pageTop: {
-        fontWeight: 'bold',
-        fontSize: 40,
-        marginTop: windowHeight * 0.01,
-        textAlign: 'center'
-    }, 
-    signin: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        textAlign: 'center',
-        padding: 3
-    },
-
-    useyouraccount: {
-        fontSize: 9,
-        textAlign: 'center',
-    },
-
-    title: {
-        fontWeight: 'bold',
-        fontSize: 40,
-        marginTop: windowHeight * 0.01,
-        textAlign: 'center',
-        padding: 30
-    },
-    loginScreenButton:{
-        marginRight:40,
-        marginLeft:40,
-       marginTop:10,
-        paddingTop:10,
-        paddingBottom:10,
-        backgroundColor:"#35b8b6",
-        borderRadius:10,
-        borderWidth: 1,
-        borderColor: '#fff',
-        position: 'relative'
-      },
-  loginText:{
-      color:'#fff',
-      textAlign:'center',
-      paddingLeft : 10,
-      paddingRight : 10
+  imgBackground: {
+    width: "100%",
+    height: "100%",
+    flex: 1,
   },
-  pageBottom: {
-    fontSize: 10,
-    paddingTop: windowHeight * 0.5,
-    paddingBottom: 15,
-    textAlign:'center',
-}, 
-    signUp: {
+  mainPage: {
+    backgroundColor: "black",
+    height: windowHeight,
+  },
 
-    }
+  pageTop: {
+    marginTop: windowHeight * 0.01,
+    flexDirection: "row",
+    padding: 30,
+  },
+
+  pageTopText: {
+    color: "white",
+    fontWeight: "bold",
+    flex: 1,
+    fontSize: 15,
+  },
+
+  pageBottom: {
+    marginLeft: windowWidth * 0.1,
+    marginRight: windowWidth * 0.1,
+    position: "absolute",
+    top: windowHeight - windowHeight * 0.4,
+  },
+
+  pageBottomTexta: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 35,
+  },
+  pageBottomTextb: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 15,
+  },
+
+  loginScreenButton: {
+    top: windowHeight - windowHeight * 0.3,
+    backgroundColor: "#e30914",
+  },
+  loginText: {
+    color: "white",
+    textAlign: "center",
+    paddingTop: windowHeight * 0.015,
+    paddingBottom: windowHeight * 0.015,
+    fontSize: 20,
+    position: "relative",
+  },
+
+  signUp: {},
 });
 
-export default PreSignUp
+export default PreSignUp;
