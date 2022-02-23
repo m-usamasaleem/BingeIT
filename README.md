@@ -22,6 +22,7 @@ Cancel changes
 # Step 2: Run App
 * run "expo start" to start the app
 * install npm module by run "npm install ``package_name``
+# Flow of app
 
 * Flask api/ flask app for integrating ML models
 * Will deploy flask app on Heroku to generate flask api
