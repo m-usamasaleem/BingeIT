@@ -22,4 +22,10 @@ Cancel changes
 # Step 2: Run App
 * run "expo start" to start the app
 * install npm module by run "npm install ``package_name``
+# Flow of app
 
+* Flask api/ flask app for integrating ML models
+* Will deploy flask app on Heroku to generate flask api
+* Will use react native to handle all flask api requests
+* Will store user's data into Firebase
+* Firebase for backend
