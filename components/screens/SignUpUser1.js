@@ -7,7 +7,7 @@ import {
   Linking,
   Dimensions,
 } from "react-native";
-import SignUpForm from "../screenSnippets/SignInUserForm";
+import SignUpForm from "../screenSnippets/SignUpUserForm";
 var windowHeight = Dimensions.get("window").height;
 var windowWidth = Dimensions.get("window").width;
 const SignUp = (navigationProps) => {
@@ -48,7 +48,7 @@ const SignUp = (navigationProps) => {
         >
           SIGN IN
         </Text>
-        <Text style={myStyles.title}> SIGN IN </Text>
+        <Text style={myStyles.title}> Step 1 of 3 </Text>
 
         <SignUpForm navigateTo={navigationProps.navigation.navigate} />
         <Text style={myStyles.termsofservice}>
@@ -88,7 +88,7 @@ const SignUp = (navigationProps) => {
               onPress={() => navigationProps.navigation.navigate("PreSignIn")}
             >
               {" "}
-              SIGN UP{" "}
+              SIGN IN{" "}
             </Text>{" "}
           </Text>
         </View>

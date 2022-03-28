@@ -14,10 +14,11 @@ import * as yup from "yup";
 import firebase from "./FirebaseInit";
 
 const yupValidationSchema = yup.object({
-  email: yup.string().email().required("You Must Provide an Email Address"),
-  phone: yup.string().required("You Must Provide a Phone Number").length(11),
+  // email: yup.string().email().required("You Must Provide an Email Address"),
+  // phone: yup.string().required("You Must Provide a Phone Number").length(11),
 });
-
+var windowHeight = Dimensions.get("window").height;
+var windowWidth = Dimensions.get("window").width;
 const SignUpForm = (props) => {
   return (
     <Formik
@@ -26,7 +27,6 @@ const SignUpForm = (props) => {
       onSubmit={(formData, actions) => {
         console.log("Form Data:", formData);
         let userEmail = formData.email;
-        let userPhone = formData.phone;
         let userPass = formData.pass;
         userEmail = userEmail.replace(/\./g, ",");
         // Deliberating replacing "dots" in the email address with "commas"
@@ -37,12 +37,12 @@ const SignUpForm = (props) => {
           .database()
           .ref(`bingeIT/Users/${userEmail}`)
           .set({
-            phone: userPhone,
+            email: userEmail,
             password: userPass,
           })
           .then(() => {
             console.log(`User Sign Up Successful`);
-            props.navigateTo("SignInUser");
+            props.navigateTo("SignUpUser2");
           })
           .catch(() => {
             console.log(`Oho! User Sign Up Failed ...`);
@@ -52,7 +52,64 @@ const SignUpForm = (props) => {
       }}
     >
       {(formikProps) => {
-        return <View style={myStyles.form}></View>;
+        return (
+          <View style={myStyles.form}>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "white",
+                fontSize: 20,
+                marginLeft: windowWidth * 0.09,
+                marginRight: windowWidth * 0.09,
+              }}
+            >
+              Enter your email and password to start your membership
+            </Text>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "white",
+                fontSize: 12,
+                marginLeft: windowWidth * 0.09,
+                marginRight: windowWidth * 0.09,
+              }}
+            >
+              Two more steps and let's binge it all!
+            </Text>
+
+            <TextInput
+              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
+              placeholder="Enter Your Email"
+              onChangeText={formikProps.handleChange("email")}
+              value={formikProps.values.email}
+            />
+
+            <TextInput
+              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
+              placeholder="Enter Your Password"
+              onChangeText={formikProps.handleChange("pass")}
+              secureTextEntry={true}
+              value={formikProps.values.pass}
+            />
+            <TextInput
+              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
+              placeholder="Confirm Your Password"
+              onChangeText={formikProps.handleChange("confirm")}
+              secureTextEntry={true}
+              value={formikProps.values.confirm}
+            />
+
+            <TouchableOpacity
+              style={[
+                myStyles.inputField,
+                { marginTop: windowHeight * 0.03, backgroundColor: "#e30914" },
+              ]}
+              onPress={formikProps.handleSubmit}
+            >
+              <Text style={myStyles.loginText}>CONTINUE</Text>
+            </TouchableOpacity>
+          </View>
+        );
       }}
     </Formik>
   );
@@ -64,40 +121,24 @@ const myStyles = StyleSheet.create({
   },
   inputField: {
     padding: 6,
-    textAlign: "center",
+    color: "white",
+    backgroundColor: "#474747",
     alignContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    borderBottomColor: "#35b8b6",
     borderBottomWidth: 1.25,
-    width: Dimensions.get("window").width * 0.7,
+    width: windowWidth * 0.9,
+    height: windowHeight * 0.07,
+    borderRadius: 5,
   },
   continueButton: {
     backgroundColor: "#35b8b6",
   },
-  loginScreenButton: {
-    marginRight: 40,
-    marginLeft: 40,
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: "#35b8b6",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#fff",
-    position: "relative",
-  },
   loginText: {
-    color: "#fff",
-    textAlign: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  button: {
-    backgroundColor: "#00aeef",
-    borderColor: "red",
-    borderWidth: 5,
-    borderRadius: 15,
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 15,
+    padding: windowHeight * 0.01,
   },
   formError: {
     color: "red",

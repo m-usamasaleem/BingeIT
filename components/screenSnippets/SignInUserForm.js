@@ -5,56 +5,49 @@ import {
   StyleSheet,
   TextInput,
   Button,
+  Alert,
   TouchableOpacity,
   Dimensions,
 } from "react-native";
 import { Formik } from "formik";
+import * as yup from "yup";
 import firebase from "./FirebaseInit";
 
-const SignInUserForm = (props) => {
+const yupValidationSchema = yup.object({
+  // email: yup.string().email().required("You Must Provide an Email Address"),
+  // phone: yup.string().required("You Must Provide a Phone Number").length(11),
+});
+var windowHeight = Dimensions.get("window").height;
+var windowWidth = Dimensions.get("window").width;
+const SignUpForm = (props) => {
   return (
     <Formik
-      initialValues={{ email: "", pass: "" }}
+      initialValues={{ email: "", phone: "", pass: "", confirm: "" }}
+      validationSchema={yupValidationSchema}
       onSubmit={(formData, actions) => {
+        console.log("Form Data:", formData);
         let userEmail = formData.email;
+        let userPass = formData.pass;
         userEmail = userEmail.replace(/\./g, ",");
-        let userEmailToPass = userEmail.replace(/\,/g, ".");
-        let userPassword = formData.pass;
+        // Deliberating replacing "dots" in the email address with "commas"
+        // so to avoid firebase key indexing issues
+        console.log(userEmail);
 
         firebase
           .database()
-          .ref(`${userEmail}`)
-          .once("value", (data) => {
-            console.log("Form Data:", userEmailToPass, userPassword);
-            let firebaseDataString = JSON.stringify(data); // JavaScript object to string
-            let firebaseDataJSON = JSON.parse(firebaseDataString); // String to JSON
-            console.log(
-              "Form Data:",
-
-              firebaseDataJSON.password === userPassword,
-              userEmailToPass,
-              userPassword
-            );
-
-            if (firebaseDataJSON) {
-              if (firebaseDataJSON.password === userPassword) {
-                console.log(
-                  `Login Successful .... Email and password both match`
-                );
-                props.navigateTo("CustTabsWrapper", {
-                  userEmail: userEmailToPass,
-                });
-              } else {
-                console.log(
-                  `Login Failed ... Email matched but password did not`
-                );
-              }
-            } else {
-              console.log(
-                `Login Failed .... Email did not match. Did not check password to save time`
-              );
-            }
+          .ref(`bingeIT/Users/${userEmail}`)
+          .set({
+            email: userEmail,
+            password: userPass,
+          })
+          .then(() => {
+            console.log(`User Sign Up Successful`);
+            props.navigateTo("SignUpUser2");
+          })
+          .catch(() => {
+            console.log(`Oho! User Sign Up Failed ...`);
           });
+
         actions.resetForm();
       }}
     >
@@ -62,24 +55,28 @@ const SignInUserForm = (props) => {
         return (
           <View style={myStyles.form}>
             <TextInput
-              style={myStyles.inputField}
+              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
               placeholder="Enter Your Email"
               onChangeText={formikProps.handleChange("email")}
               value={formikProps.values.email}
             />
+
             <TextInput
-              style={myStyles.inputField}
+              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
               placeholder="Enter Your Password"
-              secureTextEntry={true}
               onChangeText={formikProps.handleChange("pass")}
+              secureTextEntry={true}
               value={formikProps.values.pass}
             />
+
             <TouchableOpacity
-              style={myStyles.loginScreenButton}
+              style={[
+                myStyles.inputField,
+                { marginTop: windowHeight * 0.03, backgroundColor: "#e30914" },
+              ]}
               onPress={formikProps.handleSubmit}
-              underlayColor="#fff"
             >
-              <Text style={myStyles.loginText}>Continue</Text>
+              <Text style={myStyles.loginText}>CONTINUE</Text>
             </TouchableOpacity>
           </View>
         );
@@ -90,44 +87,28 @@ const SignInUserForm = (props) => {
 
 const myStyles = StyleSheet.create({
   form: {
-    margin: "15%",
-    marginBottom: "20%",
-    marginTop: 10,
     textAlign: "center",
   },
   inputField: {
     padding: 6,
-    textAlign: "center",
-    borderBottomColor: "#35b8b6",
+    color: "white",
+    backgroundColor: "#474747",
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
     borderBottomWidth: 1.25,
-    width: Dimensions.get("window").width * 0.7,
+    width: windowWidth * 0.9,
+    height: windowHeight * 0.07,
+    borderRadius: 5,
   },
   continueButton: {
-    backgroundColor: "red",
-  },
-  loginScreenButton: {
-    marginRight: 40,
-    marginLeft: 40,
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
     backgroundColor: "#35b8b6",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#fff",
-    position: "relative",
   },
   loginText: {
-    color: "#fff",
-    textAlign: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  button: {
-    backgroundColor: "#00aeef",
-    borderColor: "red",
-    borderWidth: 5,
-    borderRadius: 15,
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 15,
+    padding: windowHeight * 0.01,
   },
   formError: {
     color: "red",
@@ -136,4 +117,4 @@ const myStyles = StyleSheet.create({
   },
 });
 
-export default SignInUserForm;
+export default SignUpForm;

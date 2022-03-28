@@ -1,13 +1,13 @@
 import React from "react";
 import {
   View,
+  TouchableOpacity,
   Image,
   Text,
   StyleSheet,
   Linking,
   Dimensions,
 } from "react-native";
-import SignUpForm from "../screenSnippets/SignInUserForm";
 var windowHeight = Dimensions.get("window").height;
 var windowWidth = Dimensions.get("window").width;
 const SignUp = (navigationProps) => {
@@ -48,56 +48,64 @@ const SignUp = (navigationProps) => {
         >
           SIGN IN
         </Text>
-        <Text style={myStyles.title}> SIGN IN </Text>
+        <Text style={myStyles.title}> Step 2 of 3 </Text>
 
-        <SignUpForm navigateTo={navigationProps.navigation.navigate} />
-        <Text style={myStyles.termsofservice}>
-          <Text style={myStyles.termsofservice}>
-            {" "}
-            By continuing, you agree to our{" "}
-          </Text>
-
-          <Text
-            style={myStyles.urlLinking}
-            onPress={() =>
-              Linking.openURL(
-                "http://www.uzair-reviews.com/MobileMechanic/privacy-policy.html"
-              )
-            }
-          >
-            PRIVACY POLICY
-          </Text>
-          <Text> and </Text>
-          <Text
-            style={myStyles.urlLinking}
-            onPress={() => {
-              Linking.openURL(
-                "http://www.uzair-reviews.com/MobileMechanic/terms-of-service.html"
-              );
-            }}
-          >
-            TERMS OF SERVICE
-          </Text>
+        <Text
+          style={{
+            color: "white",
+            fontSize: 25,
+            marginLeft: windowWidth * 0.1,
+            marginRight: windowWidth * 0.1,
+          }}
+        >
+          {"Choose your plan.\n"}
         </Text>
-        <View>
-          <Text style={myStyles.pageBottom}>
-            {" "}
-            Already Have an Account?{" "}
-            <Text
-              style={{ color: "#e30914" }}
-              onPress={() => navigationProps.navigation.navigate("PreSignIn")}
-            >
-              {" "}
-              SIGN UP{" "}
-            </Text>{" "}
-          </Text>
-        </View>
+        <Text
+          style={{
+            color: "white",
+            fontSize: 16,
+            marginLeft: windowWidth * 0.11,
+            marginRight: windowWidth * 0.1,
+          }}
+        >
+          <Text>{"\u2022 No commitments, cancel at any time.\n\n"}</Text>
+          <Text>{"\u2022 Everything on BingeIT for one low price.\n\n"}</Text>
+          <Text>{"\u2022 Unlimited viewing on all your devices.\n\n"}</Text>
+        </Text>
+
+        <TouchableOpacity
+          style={[
+            myStyles.inputField,
+            { marginTop: windowHeight * 0.03, backgroundColor: "#e30914" },
+          ]}
+          onPress={() => navigationProps.navigation.navigate("SignUpUser3")}
+        >
+          <Text style={myStyles.loginText}>SEE THE PLANS</Text>
+        </TouchableOpacity>
       </View>
     </React.Fragment>
   );
 };
 
 const myStyles = StyleSheet.create({
+  inputField: {
+    padding: 6,
+    color: "white",
+    backgroundColor: "#474747",
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    borderBottomWidth: 1.25,
+    width: windowWidth * 0.9,
+    height: windowHeight * 0.07,
+    borderRadius: 5,
+  },
+  loginText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 15,
+    padding: windowHeight * 0.01,
+  },
   backgroudStyle: {
     backgroundColor: "black",
     position: "absolute",
@@ -145,6 +153,7 @@ const myStyles = StyleSheet.create({
     paddingBottom: 10,
     textAlign: "center",
     color: "white",
+    color: "#e30914",
   },
   urlLinking: {
     paddingLeft: 20,
