@@ -13,21 +13,35 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import firebase from "./FirebaseInit";
 
-const yupValidationSchema = yup.object({
-  // email: yup.string().email().required("You Must Provide an Email Address"),
-  // phone: yup.string().required("You Must Provide a Phone Number").length(11),
-});
 var windowHeight = Dimensions.get("window").height;
 var windowWidth = Dimensions.get("window").width;
+const yupValidationSchema = yup.object({
+  email: yup
+    .string()
+    .email()
+    .required("You Must Provide a valid Email Address"),
+  // phone: yup.string().required("You Must Provide a Phone Number").length(11),
+  pass: yup.string().required("You Must Enter a Password"),
+});
+
 const SignUpForm = (props) => {
+  const createTwoButtonAlert = () =>
+    Alert.alert("Invalid Credentials", "Your email or password is incorrect", [
+      {
+        text: "Cancel",
+        onPress: () => props.navigateTo("PreSignIn"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ]);
   return (
     <Formik
-      initialValues={{ email: "", phone: "", pass: "", confirm: "" }}
+      initialValues={{ email: "", pass: "" }}
       validationSchema={yupValidationSchema}
       onSubmit={(formData, actions) => {
         console.log("Form Data:", formData);
         let userEmail = formData.email;
-        let userPass = formData.pass;
+        let userPassword = formData.pass;
         userEmail = userEmail.replace(/\./g, ",");
         // Deliberating replacing "dots" in the email address with "commas"
         // so to avoid firebase key indexing issues
@@ -36,19 +50,34 @@ const SignUpForm = (props) => {
         firebase
           .database()
           .ref(`bingeIT/Users/${userEmail}`)
-          .set({
-            email: userEmail,
-            password: userPass,
-          })
-          .then(() => {
-            console.log(`User Sign Up Successful`);
-            props.navigateTo("SignUpUser2");
-          })
-          .catch(() => {
-            console.log(`Oho! User Sign Up Failed ...`);
+          .once("value", (data) => {
+            let firebaseDataString = JSON.stringify(data); // JavaScript object to string
+            let firebaseDataJSON = JSON.parse(firebaseDataString); // String to JSON
+            console.log(firebaseDataJSON);
+            if (firebaseDataJSON) {
+              if (firebaseDataJSON.password === userPassword) {
+                console.log(
+                  `Login Successful .... email and password both match`
+                );
+
+                props.navigateTo("Navigator", {
+                  userEmail: userEmail,
+                });
+              } else {
+                createTwoButtonAlert();
+                console.log(
+                  `Login Failed ... email matched but password did not`
+                );
+              }
+            } else {
+              createTwoButtonAlert();
+              console.log(
+                `Login Failed .... email did not match. Did not check password to save time`
+              );
+            }
           });
 
-        actions.resetForm();
+        //actions.resetForm();
       }}
     >
       {(formikProps) => {
@@ -60,14 +89,22 @@ const SignUpForm = (props) => {
               onChangeText={formikProps.handleChange("email")}
               value={formikProps.values.email}
             />
+            <Text style={myStyles.formError}>
+              {" "}
+              {formikProps.touched.email && formikProps.errors.email}{" "}
+            </Text>
 
             <TextInput
               style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
               placeholder="Enter Your Password"
-              onChangeText={formikProps.handleChange("pass")}
               secureTextEntry={true}
+              onChangeText={formikProps.handleChange("pass")}
               value={formikProps.values.pass}
             />
+            <Text style={myStyles.formError}>
+              {" "}
+              {formikProps.touched.pass && formikProps.errors.pass}{" "}
+            </Text>
 
             <TouchableOpacity
               style={[
@@ -114,6 +151,8 @@ const myStyles = StyleSheet.create({
     color: "red",
     fontSize: 12,
     textAlign: "center",
+    marginLeft: windowWidth * 0.1,
+    marginRight: windowWidth * 0.1,
   },
 });
 

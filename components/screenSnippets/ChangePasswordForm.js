@@ -80,43 +80,9 @@ const SignUpForm = (props) => {
       {(formikProps) => {
         return (
           <View style={myStyles.form}>
-            <Text
-              style={{
-                textAlign: "center",
-                color: "white",
-                fontSize: 20,
-                marginLeft: windowWidth * 0.09,
-                marginRight: windowWidth * 0.09,
-              }}
-            >
-              Enter your email and password to start your membership
-            </Text>
-            <Text
-              style={{
-                textAlign: "center",
-                color: "white",
-                fontSize: 12,
-                marginLeft: windowWidth * 0.09,
-                marginRight: windowWidth * 0.09,
-              }}
-            >
-              Two more steps and let's binge it all!
-            </Text>
-
             <TextInput
               style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
-              placeholder="Enter Your Email"
-              onChangeText={formikProps.handleChange("email")}
-              value={formikProps.values.email}
-            />
-            <Text style={myStyles.formError}>
-              {" "}
-              {formikProps.touched.email && formikProps.errors.email}{" "}
-            </Text>
-
-            <TextInput
-              style={[myStyles.inputField, { marginTop: windowHeight * 0.03 }]}
-              placeholder="Enter Your Password"
+              placeholder="Enter Your New Password"
               onChangeText={formikProps.handleChange("pass")}
               secureTextEntry={true}
               value={formikProps.values.pass}
@@ -145,7 +111,7 @@ const SignUpForm = (props) => {
               ]}
               onPress={formikProps.handleSubmit}
             >
-              <Text style={myStyles.loginText}>CONTINUE</Text>
+              <Text style={myStyles.loginText}>Update Password</Text>
             </TouchableOpacity>
           </View>
         );

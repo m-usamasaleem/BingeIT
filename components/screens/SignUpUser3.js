@@ -57,7 +57,7 @@ const SignUp = (navigationProps) => {
   return (
     <React.Fragment>
       <View style={myStyles.backgroudStyle}>
-        <Text style={myStyles.title}> Step 2 of 3 </Text>
+        <Text style={myStyles.title}> Step 3 of 3 </Text>
 
         <Text
           style={{

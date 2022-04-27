@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Image,
+  Linking,
 } from "react-native";
 
 var windowHeight = Dimensions.get("window").height;
@@ -44,20 +45,30 @@ const PreSignUp = (navigationProps) => {
                 paddingTop: windowHeight * 0.03,
               },
             ]}
+            onPress={() => {
+              Linking.openURL(
+                "https://github.com/m-usamasaleem/policy/blob/main/README.md"
+              );
+            }}
           >
             PRIVACY
           </Text>
-          <Text
-            style={[
-              myStyles.pageTopText,
-              {
-                marginLeft: windowWidth * 0.08,
-                paddingTop: windowHeight * 0.03,
-              },
-            ]}
+
+          <TouchableOpacity
+            onPress={() => navigationProps.navigation.navigate("SignInUser")}
           >
-            SIGN IN
-          </Text>
+            <Text
+              style={[
+                myStyles.pageTopText,
+                {
+                  marginLeft: windowWidth * 0.08,
+                  paddingTop: windowHeight * 0.03,
+                },
+              ]}
+            >
+              SIGN IN
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={myStyles.pageBottom}>

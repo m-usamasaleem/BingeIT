@@ -7,7 +7,7 @@ import {
   Linking,
   Dimensions,
 } from "react-native";
-import SignUpForm from "../screenSnippets/SignInUserForm";
+import SignInUserForm from "../screenSnippets/SignInUserForm";
 var windowHeight = Dimensions.get("window").height;
 var windowWidth = Dimensions.get("window").width;
 const SignUp = (navigationProps) => {
@@ -50,7 +50,7 @@ const SignUp = (navigationProps) => {
         </Text>
         <Text style={myStyles.title}> SIGN IN </Text>
 
-        <SignUpForm navigateTo={navigationProps.navigation.navigate} />
+        <SignInUserForm navigateTo={navigationProps.navigation.navigate} />
         <Text style={myStyles.termsofservice}>
           <Text style={myStyles.termsofservice}>
             {" "}
@@ -61,7 +61,7 @@ const SignUp = (navigationProps) => {
             style={myStyles.urlLinking}
             onPress={() =>
               Linking.openURL(
-                "http://www.uzair-reviews.com/MobileMechanic/privacy-policy.html"
+                "https://github.com/m-usamasaleem/policy/blob/main/README.md"
               )
             }
           >
@@ -72,7 +72,7 @@ const SignUp = (navigationProps) => {
             style={myStyles.urlLinking}
             onPress={() => {
               Linking.openURL(
-                "http://www.uzair-reviews.com/MobileMechanic/terms-of-service.html"
+                "https://github.com/m-usamasaleem/policy/blob/main/README.md"
               );
             }}
           >

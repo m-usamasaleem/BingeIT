@@ -9,7 +9,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import SignUpForm from "../screenSnippets/SignUpUserForm";
+import SignUpForm from "../screenSnippets/ChangePasswordForm";
 var windowHeight = Dimensions.get("window").height;
 var windowWidth = Dimensions.get("window").width;
 const SignUp = (navigationProps) => {
@@ -28,17 +28,7 @@ const SignUp = (navigationProps) => {
               position: "absolute",
             }}
           />
-          <Text
-            style={[
-              myStyles.pageTopText,
-              {
-                marginLeft: windowWidth * 0.55,
-                paddingTop: windowHeight * 0.07,
-              },
-            ]}
-          >
-            PRIVACY
-          </Text>
+
           <Text
             style={[
               myStyles.pageTopText,
@@ -49,52 +39,12 @@ const SignUp = (navigationProps) => {
               },
             ]}
           >
-            SIGN IN
+            PRIVACY
           </Text>
-          <Text style={myStyles.title}> Step 1 of 3 </Text>
+          <Text style={myStyles.title}> Change Password </Text>
 
           <SignUpForm navigateTo={navigationProps.navigation.navigate} />
-          <Text style={myStyles.termsofservice}>
-            <Text style={myStyles.termsofservice}>
-              {" "}
-              By continuing, you agree to our{" "}
-            </Text>
-
-            <Text
-              style={myStyles.urlLinking}
-              onPress={() =>
-                Linking.openURL(
-                  "https://github.com/m-usamasaleem/policy/blob/main/README.md"
-                )
-              }
-            >
-              PRIVACY POLICY
-            </Text>
-            <Text> and </Text>
-            <Text
-              style={myStyles.urlLinking}
-              onPress={() => {
-                Linking.openURL(
-                  "https://github.com/m-usamasaleem/policy/blob/main/README.md"
-                );
-              }}
-            >
-              TERMS OF SERVICE
-            </Text>
-          </Text>
-          <View>
-            <Text style={myStyles.pageBottom}>
-              {" "}
-              Already Have an Account?{" "}
-              <Text
-                style={{ color: "#e30914" }}
-                onPress={() => navigationProps.navigation.navigate("PreSignIn")}
-              >
-                {" "}
-                SIGN IN{" "}
-              </Text>{" "}
-            </Text>
-          </View>
+          <Text style={myStyles.termsofservice}></Text>
         </View>
       </React.Fragment>
     </SafeAreaView>
@@ -144,7 +94,7 @@ const myStyles = StyleSheet.create({
     color: "white",
   },
   pageBottom: {
-    paddingTop: 30,
+    paddingTop: 60,
     fontSize: 12,
     paddingBottom: 10,
     textAlign: "center",

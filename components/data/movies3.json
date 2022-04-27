@@ -1,0 +1,105 @@
+{    
+    "1": {
+        "id": "1",
+        "name": "Death Note",
+        "image": "https://m.media-amazon.com/images/I/61k3qe5zitL._AC_SY741_.jpg",
+        "language": "English",
+        "duration": "2hr 50mins",
+        "quality": "4k",
+        "year": "1995",
+        "rating": "R",
+        "arriving": "NOV 11th",
+        "description": "William Wallace is the medieval Scottish patriot who is spurred into revolt against the English when the love of his life is slaughtered. Leading his army into battles that become a war, his advance into England threatens King Edward I's throne before he is captured and executed, but not before becoming a symbol for a free Scotland.",
+        "starring": "Christian Bale",
+        "director": "Mary Harron"
+    },
+    
+    "2": {
+        "id": "2",
+        "name": "Attack on Titan",
+        "image": "https://m.media-amazon.com/images/I/81dH7-pkjiL._AC_SY679_.jpg",
+        "language": "English",
+        "duration": "2hrs 55mins",
+        "quality": "HDR",
+        "year": "1972",
+        "rating": "R",
+        "arriving": "MAY 4th",
+        "description": "Widely regarded as one of the greatest films of all time, this mob drama, based on Mario Puzo's novel of the same name, focuses on the powerful Italian-American crime family of Don Vito Corleone (Marlon Brando). When the don's youngest son, Michael (Al Pacino), reluctantly joins the Mafia, he becomes involved in the inevitable cycle of violence and betrayal. Although Michael tries to maintain a normal relationship with his wife, Kay (Diane Keaton), he is drawn deeper into the family business.",
+        "starring": " Marlon Brando, Al Pacino, James Caan, Richard Castellano, Robert Duvall, Sterling Hayden, John Marley, Richard Conte, and Diane Keaton.",
+        "director": "Francis Ford Coppola"
+        
+},
+    "3": {
+        "id": "3",
+        "name": "Dororo",
+        "image": "https://i.redd.it/x3a0nm4pvp751.png",
+        "language": "English",
+        "duration": "2hrs 32mins",
+        "quality": "4k",
+        "year": "2008",
+        "rating": "PG-13",
+        "arriving": "JULY 14th",
+        "description": "With the help of allies Lt. Jim Gordon (Gary Oldman) and DA Harvey Dent (Aaron Eckhart), Batman (Christian Bale) has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker (Heath Ledger) suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.",
+        "starring": "Christian Bale, Michael Caine, Heath Ledger, Gary Oldman, Aaron Eckhart, Maggie Gyllenhaal, and Morgan Freeman. ",
+        "director": "Christopher Nolan"
+},
+    "4": {
+        "id": "4",
+        "name": "Erased",
+        "image": "https://m.media-amazon.com/images/M/MV5BNDFmYjRkZWYtNjgyZS00YTY5LWIyMmQtZTI0OGRiOGM5NGY3L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+        "language": "English",
+        "duration": "3hrs 22mins",
+        "quality": "4k",
+        "year": "1974",
+        "rating": "R",
+        "arriving": "APRIL 22nd",
+        "description": "The compelling sequel to The Godfather, contrasting the life of Corleone father and son. Traces the problems of Michael Corleone (Al Pacino) in 1958 and that of a young immigrant Vito Corleone (Robert De Niro) in 1917's Hell's Kitchen. Michael survives many misfortunes and Vito is introduced to a life of crime.",
+        "starring": " Marlon Brando, Al Pacino, James Caan, Richard Castellano, Robert Duvall, Sterling Hayden, John Marley, Richard Conte, and Diane Keaton.",
+        "director": "Francis Ford Coppola"
+},
+    "5": {
+        "id": "5",
+        "name": "Stein's Gate",
+        "image": "https://play-lh.googleusercontent.com/fvDUoqW9XQzZlT39-ouL5Tj6-YYesu9vfxX-437ksYI5-Vb1VUTafZHCMY3faj80g10K=w400-h600-rw",
+        "language": "English",
+        "duration": "1hr 36mins",
+        "quality": "HD",
+        "year": "1953",
+        "rating": "PG-13",
+        "arriving": "SEPT 12th",
+        "description": "Following the closing arguments in a murder trial, the 12 members of the jury must deliberate, with a guilty verdict meaning death for the accused, an inner-city teen. As the dozen men try to reach a unanimous decision while sequestered in a room, one juror (Henry Fonda) casts considerable doubt on elements of the case. Personal issues soon rise to the surface, and conflict threatens to derail the delicate process that will decide one boy's fate.",
+        "starring": " Marlon Brando, Al Pacino, James Caan, Richard Castellano, Robert Duvall, Sterling Hayden, John Marley, Richard Conte, and Diane Keaton.",
+        "director": "Francis Ford Coppola"
+},
+
+    "6": {
+        "id": "6",
+        "name": "One Punch Man",
+        "image": "https://m.media-amazon.com/images/I/717tGEHvPNL._AC_SY741_.jpg",
+        "language": "English",
+        "duration": "2hr 50mins",
+        "quality": "4k",
+        "year": "1995",
+        "rating": "R",
+        "arriving": "NOV 11th",
+        "description": "William Wallace is the medieval Scottish patriot who is spurred into revolt against the English when the love of his life is slaughtered. Leading his army into battles that become a war, his advance into England threatens King Edward I's throne before he is captured and executed, but not before becoming a symbol for a free Scotland.",
+        "starring": "Christian Bale",
+        "director": "Mary Harron"
+},
+"7": {
+    "id": "7",
+    "name": "Naruto",
+    "image": "https://m.media-amazon.com/images/I/81qb4I6rbsL._AC_SL1500_.jpg",
+    "language": "English",
+    "duration": "2hrs 54mins",
+    "quality": "4k",
+    "year": "1994",
+    "rating": "PG-13",
+    "arriving": "JAN 14th",
+    "description": "Andy Dufresne (Tim Robbins) is sentenced to two consecutive life terms in prison for the murders of his wife and her lover and is sentenced to a tough prison. However, only Andy knows he didn't commit the crimes. While there, he forms a friendship with Red (Morgan Freeman), experiences brutality of prison life, adapts, helps the warden, etc., all in 19 years.",
+    "starring": "William Sadler, Clancy Brown, Gil Bellows, and James Whitmore ",
+    "director": "Frank Darabont"
+}
+
+
+}
